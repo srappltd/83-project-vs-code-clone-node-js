@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+    <div id="main">
+        <div class="main-top">
+            <div class="main-top-left">
+                <img src="https://www.svgrepo.com/show/452129/vs-code.svg" alt="" class="logo">
+                <a href="#" class="file-a">File</a>
+                <a href="#" class="edit-a">Edit</a>
+                <a href="#" class="selection-a">Selection</a>
+                <a href="#" class="view-a">View</a>
+                <a href="#" class="go-a">Go</a>
+                <a href="#" class="run-a">Run</a>
+                <a href="#" class="terminal-a">Terminal</a>
+                <a href="#" class="help-a">Help</a>
+            </div>
+            <div class="main-top-center">
+                <p>file name</p>
+            </div>
+            <div class="main-top-right">
+                <img src="../assets/sidebar-left-svgrepo-com.svg" alt="">
+                <img src="../assets/sidebar-left-svgrepo-com.svg" class="img-bottom" alt="">
+                <img src="../assets/sidebar-left-svgrepo-com.svg" class="img-top" alt="">
+                <img src="../assets/sidebar-left-svgrepo-com.svg" class="img-right" alt="">
+            </div>
+        </div>
+        <div class="main-center">
+            <div class="main-center-left">
+                <div class="file">
+                    <i class="ri-file-line"></i>
+                    <i class="ri-search-line"></i>
+                    <i class="ri-remote-control-line"></i>
+                    <img src="../assets/extension-svgrepo-com.svg" alt="">
+                    <img src="../assets/debug-alt-svgrepo-com.svg" alt="">
+                    <img src="../assets/menu-dots-svgrepo-com.svg" alt="">
+                </div>
+                <div class="account">
+                    <i class="ri-account-circle-line"></i>
+                    <i class="ri-settings-2-line"></i>
+                </div>
+            </div>
+            <div class="toggle">
+                <div class="explorer">
+                    <div class="expo-top">
+                        <p>EXPLORER</p>
+                        <img src="../assets/menu-dots-svgrepo-com.svg" alt="">
+                    </div>
+                    <div class="expo-create">
+                        <p>Folder name</p>
+                        <div>
+                            <i class="ri-file-add-line"></i>
+                            <i class="ri-folder-add-line"></i>
+                            <a href="/"><i class="ri-refresh-line"></i></a>
+                            <img src="../assets/folder-open-svgrepo-com.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="inp">
+                        <div class="input">
+                            <img src="../assets/file-text-svgrepo-com.svg" alt="" class="file-icon">
+                            <form action="/file">
+                                <input type="text" placeholder="Create file" class="input-create" name="file">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="folderIn">
+                        <div class="input">
+                            <img src="../assets/file-text-svgrepo-com.svg" alt="" class="file-icon">
+                            <form action="/folder">
+                                <input type="text" placeholder="Create folder" class="input-create" name="folder">
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="expo-bottom">
+                        <% data.forEach(elem=>{%>
+                            <% if(!elem.isDirectory()){%>
+                                <div class="expo-item">
+                                    <div class="a-file a-input">
+                                        <a href="<%= elem.name%>" class="fileName"><img src="../assets/file-text-svgrepo-com.svg" alt=""><%= elem.name%></a>
+                                        <span class="span-icon"><i class="ri-edit-fill"></i><a href="/delete/file/<%= elem.name%>"><i class="ri-delete-bin-2-line"></i></a></span>
+                                        <form action="/update/file/<%= elem.name%>">
+                                            <input type="text" placeholder="Edit Files" name="update" value="<%= elem.name%>">
+                                        </form>
+                                    </div>
+                                </div>
+
+                            <% }else{%>
+                                <div class="expo-item">
+                                    <div class="a-folder a-input">
+                                        <p class="folderName"><img src="../assets/folder-2-svgrepo-com.svg" alt="" > <%= elem.name%></p>
+                                        <span><i class="ri-edit-fill"></i><a href="/delete/folder/<%= elem.name%>"><i class="ri-delete-bin-2-line"></i></a></span>
+                                        <form action="/update/folder/<%= elem.name%>">
+                                            <input type="text" placeholder="Edit Files" name="update" value="<%= elem.name%>">
+                                        </form>
+                                    </div>
+                                </div>
+                            <% }%>
+                        <% })%>
+
+                        
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="textarea">
+                <div class="num">
+                    <a href="">1</a>
+                </div>
+                <textarea name="" id=""  rows="1000" class="txt1"></textarea>
+                <!-- <textarea name="" id="" rows="1000" class="txt2"></textarea> -->
+                <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                <!-- <input type="text"> -->
+            </div>
+        </div>
+        <div class="main-bottom">
+            <div class="main-bottom-left">
+                <div>
+                    <i class="ri-arrow-right-s-line"></i>
+                    <i class="ri-arrow-left-s-line"></i>
+                </div>
+                <i class="ri-close-circle-fill"></i>
+                <i class="ri-alert-fill"></i>
+            </div>
+            <div class="main-bottom-right">
+                <a href="#"><span>Ln 01</span>,<span>Col 01</span></a>
+                <a href="#">Spaces: <span>4</span></a>
+                <a href="#">UTF-8</a>
+                <a href="#" >HTML</a>
+                <a href="#">indent: <span>4</span></a>
+                <a class="live-gps"><i class="ri-gps-fill"></i> Live server</a>
+                <i class="ri-feedback-fill"></i>
+                <i class="ri-notification-4-fill"></i>
+            </div>
+        </div>
+
+        <div id="file-menu">
+            <a href="#">New text file</a>
+            <a href="#">New file</a>
+            <a href="#">New window</a>
+            <div class="line"></div>
+            <a href="#">open file</a>
+            <a href="#">open folder</a>
+            <a href="#">open recent</a>
+            <div class="line"></div>
+            <a href="#">open workshop</a>
+            <a href="#">save workshop</a>
+            <a href="#">duplicate workshop</a>
+            <div class="line"></div>
+            <a href="#">save</a>
+            <a href="#">save as</a>
+            <div class="line"></div>
+            <a href="#">share</a>
+            <a href="#">auto save</a>
+            <a href="#">preferences</a>
+            <div class="line"></div>
+            <a href="#">revent file</a>
+            <a href="#">close editor</a>
+            <a href="#">close folder</a>
+            <a href="#">close window</a>
+            <div class="line"></div>
+            <a href="#">exit</a>
+        </div>
+        <div id="edit-menu">
+            <a href="#">undo</a>
+            <a href="#">redo</a>
+            <div class="line"></div>
+            <a href="#">cut</a>
+            <a href="#">copy</a>
+            <a href="#">paste</a>
+            <div class="line"></div>
+            <a href="#">find</a>
+            <a href="#">replace</a>
+            <div class="line"></div>
+            <a href="#">find in files</a>
+            <a href="#">replace in files</a>
+            <div class="line"></div>
+            <a href="#">toggle line comment</a>
+            <a href="#">toggle block comment</a>
+            <a href="#">emmet: in expand abbreviation</a>
+        </div>
+        <div id="selection-menu">
+            <a href="#">select all</a>
+            <a href="#">expand selection</a>
+            <a href="#">shrink selection</a>
+            <div class="line"></div>
+            <a href="#">copy line up</a>
+            <a href="#">copy line down</a>
+            <a href="#">move line up</a>
+            <a href="#">move line down</a>
+            <a href="#">duplicate selection</a>
+            <div class="line"></div>
+            <a href="#">add cursor above</a>
+            <a href="#">add cursor below</a>
+            <a href="#">add next occurrence</a>
+            <a href="#">add previous occurrence</a>
+            <a href="#">select all occurrence</a>
+            <div class="line"></div>
+            <a href="#">switch to Ctrl+Click for multi-Cursor</a>
+            <a href="#">column selection mode</a>
+
+        </div>
+        <div id="view-menu">
+            <a href="">command palette...</a>
+            <a href="">pen view...</a>
+            <div class="line"></div>
+            <a href="">appearance</a>
+            <a href="">editor layout</a>
+            <div class="line"></div>
+            <a href="">explorer</a>
+            <a href="">search</a>
+            <a href="">souce control</a>
+            <a href="">new</a>
+            <a href="">extensions</a>
+            <div class="line"></div>
+            <a href="">problem</a>
+            <a href="">output</a>
+            <a href="">debug console</a>
+            <a href="">terminal</a>
+            <div class="line"></div>
+            <a href="">word wrap</a>
+            <a href="">sticky scroll</a>
+        </div>
+
+        <div id="output" onload="location.reload(true)"></div>
+        
+    </div>
+
+    <script src="../script/scripts.js"></script>
+</body>
+</html>
